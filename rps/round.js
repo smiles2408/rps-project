@@ -29,6 +29,19 @@ class Round{
     getComputerSelection() {
         //*********************************ADD CODE HERE *************************************/
         // Use Math.floor and select a random Selections enumerator from above 
+        var computerSelectionRandom = Math.floor(Math.random() * 3);
+        switch(computerSelectionRandom){
+            case 0:
+                this.computerSelection = Selections.ROCK;
+                break;
+            case 1:
+                this.computerSelection = Selections.PAPER;
+                break;
+            case 2:
+                this.computerSelection = Selections.SCISSORS;
+                break;          
+        }
+       return this.computerSelection;
     }
 
     /**
@@ -40,6 +53,32 @@ class Round{
     determineWinner() {
         //*********************************ADD CODE HERE *************************************/
         // Use this.playerSelection and this.computerSelection to return the appropriate outcome from the Outcomes enumerator above.
+        if(this.computerSelection === this.playerSelection){
+            return Outcomes.TIE;
+        }
+        if(this.playerSelection === "scissors"){
+            if(this.computerSelection === "rock"){
+                return Outcomes.COMPUTER_WINS;
+            }else {
+                return Outcomes.PLAYER_WINS;
+            }
+        }
+
+        if(this.playerSelection === "rock"){
+            if(this.computerSelection ==="paper"){
+                return Outcomes.COMPUTER_WINS;
+            }else {
+              
+                return Outcomes.PLAYER_WINS;
+            }
+        }
+        if(this.playerSelection === "paper"){
+            if(this.computerSelection === "scissors"){
+                return Outcomes.COMPUTER_WINS;
+            }else {
+                return Outcomes.PLAYER_WINS;
+            }
+        }
     }
 
 
